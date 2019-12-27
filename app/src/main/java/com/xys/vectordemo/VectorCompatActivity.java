@@ -54,6 +54,7 @@ public class VectorCompatActivity extends AppCompatActivity {
     ImageView mImageView;
     private Context othercontext;
     private SharedPreferences sp;
+    private String[] area = {"德鲁斯瓦", "祖达萨", "提拉加德", "纳兹米尔", "斯托颂谷地", "沃顿"};
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -82,12 +83,14 @@ public class VectorCompatActivity extends AppCompatActivity {
         //开始 ：getDateTimeFromMillisecond(1546272000000L);
         //结束 ：getDateTimeFromMillisecond(1546297200000L);
         //7h=25200 * 1000,17h=61200 * 1000,19h=68400 * 1000,12h=43200 * 1000
-        long start = timeStrToMillisecond("2019-08-24 20:00:00");//1546333200000L;
+        long start = timeStrToMillisecond("2019-11-11 05:00:00");//1546333200000L;
         long end = start + 25200 * 1000L;
         long deltaRound = 43200 * 1000L;
         long deltaStartEnd = 25200 * 1000L;
         for (int i = 0; i < 100; i++) {
-            Log.e("====", "开始时间：" + getDateTimeFromMillisecond(start) + "  结束时间：" + getDateTimeFromMillisecond(end) + getCanendarTimeFromMillisecond(start));
+            Log.e("====", "开始时间：" + getDateTimeFromMillisecond(start) + "  结束时间："
+                    + getDateTimeFromMillisecond(end) + getCanendarTimeFromMillisecond(start)
+                    + "  " + area[i % 6]);
             start = end + deltaRound;
             end = start + deltaStartEnd;
         }
